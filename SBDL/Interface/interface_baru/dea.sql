@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.1.6
 -- http://www.phpmyadmin.net
 --
--- Inang: 127.0.0.1
--- Waktu pembuatan: 14 Mar 2020 pada 08.58
--- Versi Server: 5.5.27
--- Versi PHP: 5.4.7
+-- Host: 127.0.0.1
+-- Generation Time: 06 Apr 2020 pada 13.29
+-- Versi Server: 5.6.16
+-- PHP Version: 5.5.9
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Basis data: `si_aset_bmck`
+-- Database: `dea`
 --
 
 -- --------------------------------------------------------
@@ -45,12 +45,13 @@ INSERT INTO `data_admin` (`username`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `data_barang` (
-  `id_baraang` int(5) NOT NULL,
+  `id_barang` int(5) NOT NULL,
   `kd_brg1` varchar(10) NOT NULL,
   `kd_brg2` varchar(10) NOT NULL,
   `kd_brg4` varchar(4) NOT NULL,
   `kd_gbg` varchar(20) NOT NULL,
   `nama_barang` varchar(200) NOT NULL,
+  `nama_ruang` varchar(50) NOT NULL,
   `merk` varchar(200) NOT NULL,
   `niali_aset` float NOT NULL,
   `letak` int(2) NOT NULL,
@@ -58,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `data_barang` (
   `asal_perolehan` varchar(100) NOT NULL,
   `thn_dapat` varchar(4) NOT NULL,
   `tgl_buku` date NOT NULL,
-  PRIMARY KEY (`id_baraang`),
+  PRIMARY KEY (`id_barang`),
   UNIQUE KEY `kd_brg1` (`kd_brg1`),
   UNIQUE KEY `kd_brg2` (`kd_brg2`),
   UNIQUE KEY `kd_brg4` (`kd_brg4`)
@@ -68,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `data_barang` (
 -- Dumping data untuk tabel `data_barang`
 --
 
-INSERT INTO `data_barang` (`id_baraang`, `kd_brg1`, `kd_brg2`, `kd_brg4`, `kd_gbg`, `nama_barang`, `merk`, `niali_aset`, `letak`, `kondisi`, `asal_perolehan`, `thn_dapat`, `tgl_buku`) VALUES
-(9988, '0011', '1111', '2222', '2233', 'ATK', 'YUPITER', 123, 0, 98, 'sumbangan', '2000', '2012-10-20');
+INSERT INTO `data_barang` (`id_barang`, `kd_brg1`, `kd_brg2`, `kd_brg4`, `kd_gbg`, `nama_barang`, `nama_ruang`, `merk`, `niali_aset`, `letak`, `kondisi`, `asal_perolehan`, `thn_dapat`, `tgl_buku`) VALUES
+(9988, '0011', '1111', '2222', '2233', 'ATK', 'coba', 'YUPITER', 123, 0, 98, 'sumbangan', '2000', '2012-10-20');
 
 -- --------------------------------------------------------
 
@@ -208,7 +209,7 @@ ALTER TABLE `data_laporan`
 -- Ketidakleluasaan untuk tabel `data_ruang`
 --
 ALTER TABLE `data_ruang`
-  ADD CONSTRAINT `data_ruang_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `data_barang` (`id_baraang`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `data_ruang_ibfk_1` FOREIGN KEY (`id_ruang`) REFERENCES `data_barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

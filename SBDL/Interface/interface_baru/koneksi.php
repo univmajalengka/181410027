@@ -2,6 +2,7 @@
 $server = 'localhost';
 $username = 'root';
 $password = '';
+$database = 'dea';
 
 // Create connection
 
